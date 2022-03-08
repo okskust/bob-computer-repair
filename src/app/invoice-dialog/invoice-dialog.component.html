@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Invoice Summary</h2>
+
+<div mat-dialog-content>
+    <div>
+        <strong>Services:</strong>
+        <div *ngFor="let item of invoice.serviceItems">
+            &nbsp;{{ item.title }} ({{item.amount | currency}})
+        </div>
+        <br />
+        Subtotal: {{ invoice.getServiceTotal() | currency }}
+    </div>
+
+    <hr />
+
+    <p>
+        Parts Fee: {{ invoice.getPartsValue() | currency }}
+    </p>
+
+    <hr />
+
+    <p>
+      Labor Fee  ($50.00 per hour): {{ invoice.getHoursAmount() | currency }}
+  </p>
+
+  <hr />
+
+    <p style="font-weight: bold;">Invoice total: {{ invoice.getInvoiceTotal() | currency }}</p>
+</div>
+
+<div mat-dialog-actions align="end">
+    <button mat-raised-button matDialogClose="cancel" color="accent">Cancel order</button>
+    <button mat-raised-button matDialogClose="confirm" color="primary">Confirm order</button>
+</div>

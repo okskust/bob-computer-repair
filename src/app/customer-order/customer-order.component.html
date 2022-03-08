@@ -1,0 +1,69 @@
+<div style='margin-top: 50px '>
+  <div fxLayout="column" style="margin: 20px auto; width: 50%;" >
+    <div fxFlex>
+      <h1 class="text-center text-primary">Bob’s Computer Repair Shop</h1>
+    </div>
+    <div fxFlex class="text-center">
+      <img src="../../assets/logo2.png" alt="Bob’s Computer Repair Shop's Logo" height="100"/>
+    </div>
+
+    <div fxFlex>
+      <mat-card>
+        <mat-card-title class="text-center text-primary"
+          >Services & Prices</mat-card-title
+        >
+
+        <br />
+
+        <mat-card-content>
+          <form #checkboxForm="ngForm" (submit)="submit()">
+            <div fxLayout="row wrap">
+              <div fxFlex class="list">
+                <div *ngFor="let item of services" class = "inline">
+
+                  <mat-checkbox
+                    value="{{ item.amount }}"
+                    [(ngModel)]="item.checked"
+                    [name]="item.title"
+                    labelPosition="after"
+
+                  >
+                    <div class="left">{{ item.title }}</div> <div class = "right">${{ item.amount }}</div>
+
+                  </mat-checkbox>
+                  <mat-divider _ngcontent-xpr-c55="" role="separator" class="mat-divider mat-divider-horizontal" aria-orientation="horizontal"></mat-divider>
+                </div>
+                <br />
+
+                <mat-form-field appearance="fill">
+                  <mat-label>Parts</mat-label>
+                  <input
+                    matInput
+                    [(ngModel)]="invoice.partsValue"
+                    type="number"
+                    name="parts"
+                  />
+                </mat-form-field>
+
+                <br />
+                <mat-form-field appearance="fill">
+                  <mat-label>Labor ($50 per hour)</mat-label>
+                  <input
+                    matInput
+                    [(ngModel)]="invoice.hoursAmount"
+                    type="number"
+                    name="labor"
+                  />
+                </mat-form-field>
+
+                <mat-card-actions align="end">
+                  <button mat-flat-button color="primary">Place Order</button>
+                </mat-card-actions>
+              </div>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
